@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpIncludePathManager">
+    <include_path>
+      <path value="$PROJECT_DIR$/gamepedia/vendor/illuminate/contracts" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/illuminate/collections" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/illuminate/container" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/illuminate/macroable" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/composer" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/illuminate/database" />
+      <path value="$PROJECT_DIR$/gamepedia/vendor/symfony/polyfill-php73" />
+    </include_path>
+  </component>
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />
+</project>
