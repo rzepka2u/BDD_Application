@@ -9,12 +9,14 @@ $db->addConnection(parse_ini_file('../config/config.ini'));
 $db->setAsGlobal();
 $db->bootEloquent();
 
-Requetes::listerJeuxMario();
+//Requetes::listerJeuxMario();
 
-Requetes::listerCompagniesJapon();
+//Requetes::listerCompagniesJapon();
 
-Requetes::listerPlatformeSup10000000();
+//Requetes::listerPlatformeSup10000000();
 
-Requetes::lister442jeux();
+//Requetes::lister442jeux();
 
-//Requetes::listerJeuxPagi();
+//Requetes::listerJeux();
+
+Requetes::listerJeuxPar500($_GET);

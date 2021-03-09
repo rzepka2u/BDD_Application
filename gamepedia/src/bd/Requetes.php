@@ -49,7 +49,7 @@ class Requetes {
         echo "FIN <br> <br>";
     }
 
-    public static function listerJeuxPagi() {
+    public static function listerJeux() {
         $games = Game::select('id', 'name', 'deck') -> get() -> toArray();
 
         echo "Liste des jeux, afficher leur nom et deck, en paginant (taille des pages : 500) : <br> <br>";
@@ -57,6 +57,34 @@ class Requetes {
             echo "ID : " . $c['id'] . " | NAME : " . $c['name'] . " | Deck : " . $c['deck'] . "<br>";
         }
         echo "FIN <br> <br>";
+    }
+
+    public static function listerJeuxPar500($contenu) {
+        $jeuxParPage = 500;
+        $pageCourante = null;
+        $nombreDeJeux = Game::count();
+
+        $_GET = $contenu;
+
+        if (isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0) {
+            $_GET['page'] = intval($_GET['page']);
+            $pageCourante = $_GET['page'];
+        } else {
+            $pageCourante = 1;
+        }
+
+        $depart = ($pageCourante-1) * $jeuxParPage;
+
+        $allGames = Game::query()->orderBy('id', 'asc')->skip($depart)->take($jeuxParPage)->get();
+        $pageTotales = ceil($nombreDeJeux / $jeuxParPage);
+
+        for ($i = 1; $i <= $pageTotales; $i++) {
+            echo '<a href="index.php?page=' . $i . '">' . $i . '</a> ';
+        }
+
+        foreach ($allGames as $game) {
+            echo "<p><h4>Jeu ($game->id) :</h4> $game->name</p> <p><h4>Deck :</h4> $game->deck</p></br>";
+        }
     }
 
 }
