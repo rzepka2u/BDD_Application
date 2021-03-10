@@ -7,6 +7,7 @@ class Genre extends Model {
 
     protected $table = 'genre';
     protected $primary_key = 'id';
+    public $timestamps = false;
 
     public function Game() {
         return $this->belongsToMany('gamepedia\models\Game', 'game2genre', 'genre_id', 'game_id');

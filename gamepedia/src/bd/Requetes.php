@@ -4,87 +4,121 @@ namespace gamepedia\bd;
 
 use gamepedia\models\Company;
 use gamepedia\models\Game;
-use gamepedia\models\Platform;
+use gamepedia\models\Character;
+use gamepedia\models\Genre;
+use gamepedia\models\RatingBoard;
+use gamepedia\models\GameRating;
+use gamepedia\models;
 
 class Requetes {
 
+    public static function listerPersoJeu12342() {
+        $perso = Character::select('name', 'deck') -> whereHas('game', function ($q) {
+            $q->where('id', '=', 12342);
+        }) -> get() -> toArray();
 
-    public static function listerJeuxMario() {
-       $games = Game::select('id', 'name') -> where('name', 'LIKE', "%mario%") -> get() -> toArray();
-
-        echo "Liste des jeux dont le nom contient 'Mario' : <br> <br>";
-        foreach ($games as $g) {
-            echo "ID : " . $g['id'] . " | NAME : " . $g['name'] . "<br>";
+        echo "(name , deck) des personnages du jeu 12342 : <br> <br>";
+        foreach ($perso as $g) {
+            echo "Name : " . $g['name'] . " | Deck : " . $g['deck'] . "<br>";
         }
         echo "FIN <br> <br>";
     }
 
-    public static function listerCompagniesJapon() {
-        $companies = Company::select('id', 'name') -> where('location_country', 'LIKE', "%japan%") -> get() -> toArray();
+    public static function listerPersoJeuMario() {
+        $perso = Character::whereHas('game', function ($q) {
+            $q->where('name', 'like', 'Mario%');
+        }) -> get() -> toArray();
 
-        echo "Liste des compagnies installées au Japon : <br> <br>";
-        foreach ($companies as $c) {
-            echo "ID : " . $c['id'] . " | NAME : " . $c['name'] . "<br>";
+        echo "personnages des jeux débutant par Mario : <br> <br>";
+        foreach ($perso as $g) {
+            echo "Name : " . $g['name'] . "<br>";
         }
         echo "FIN <br> <br>";
     }
 
-    public static function listerPlatformeSup10000000() {
-        $platforms = Platform::select('id', 'name', 'install_base') -> where('install_base', '>=', 10000000) -> get() -> toArray();
+    public static function listerJeuSony() {
+        $jeu = Game::whereHas('developer', function ($q) {
+            $q->where('name', 'like', '%Sony%');
+        }) -> get() -> toArray();
 
-        echo "Liste des plateformes dont la base installée est >= 10 000 000 : <br> <br>";
-        foreach ($platforms as $c) {
-            echo "ID : " . $c['id'] . " | NAME : " . $c['name'] . " | Base installee : " . $c['install_base'] . "<br>";
+        echo "jeu développés par Sony : <br> <br>";
+        foreach ($jeu as $g) {
+            echo "Name : " . $g['name'] . "<br>";
         }
         echo "FIN <br> <br>";
     }
 
-    public static function lister442jeux() {
-        $games = Game::select('id', 'name') -> where('id', '>=', 21173) -> limit(442) -> get() -> toArray();
+    public static function listerRatingMario() {
+        $jeu = GameRating::whereHas('game', function ($q) {
+            $q->where('name', 'like', '%Mario%');
+        }) -> get() -> toArray();
 
-        echo "Liste de 442 jeux à partir du 21173ème : <br> <br>";
-        foreach ($games as $c) {
-            echo "ID : " . $c['id'] . " | NAME : " . $c['name'] . "<br>";
+        echo "rating initial des jeux dont le nom contient Mario : <br> <br>";
+        foreach ($jeu as $g) {
+            echo "Rating : " . $g['name'] . "<br>";
         }
         echo "FIN <br> <br>";
     }
 
-    public static function listerJeux() {
-        $games = Game::select('id', 'name', 'deck') -> get() -> toArray();
+    public static function listerJeuMario3Perso() {
+        $jeu = Game::where('name', 'like', 'Mario%')->Has('character', '>', 3)-> get() -> toArray();
 
-        echo "Liste des jeux, afficher leur nom et deck, en paginant (taille des pages : 500) : <br> <br>";
-        foreach ($games as $c) {
-            echo "ID : " . $c['id'] . " | NAME : " . $c['name'] . " | Deck : " . $c['deck'] . "<br>";
+        echo "jeu développés par Sony : <br> <br>";
+        foreach ($jeu as $g) {
+            echo "Name : " . $g['name'] . "<br>";
         }
         echo "FIN <br> <br>";
     }
 
-    public static function listerJeuxPar500($contenu) {
-        $jeuxParPage = 500;
-        $pageCourante = null;
-        $nombreDeJeux = Game::count();
+    public static function listerJeuMarioRating() {
+        $jeu = Game::where('name', 'like', 'Mario%')->whereHas('rating', function($q) {
+            $q->where('name', 'like', '%3+%');
+        })-> get() -> toArray();
 
-        $_GET = $contenu;
-
-        if (isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0) {
-            $_GET['page'] = intval($_GET['page']);
-            $pageCourante = $_GET['page'];
-        } else {
-            $pageCourante = 1;
+        echo "jeux dont le nom commence par Mario et dont le rating initial contient 3+ : <br> <br>";
+        foreach ($jeu as $g) {
+            echo "Name : " . $g['name'] . "<br>";
         }
-
-        $depart = ($pageCourante-1) * $jeuxParPage;
-
-        $allGames = Game::query()->orderBy('id', 'asc')->skip($depart)->take($jeuxParPage)->get();
-        $pageTotales = ceil($nombreDeJeux / $jeuxParPage);
-
-        for ($i = 1; $i <= $pageTotales; $i++) {
-            echo '<a href="index.php?page=' . $i . '">' . $i . '</a> ';
-        }
-
-        foreach ($allGames as $game) {
-            echo "<p><h4>Jeu ($game->id) :</h4> $game->name</p> <p><h4>Deck :</h4> $game->deck</p></br>";
-        }
+        echo "FIN <br> <br>";
     }
 
+    public static function listerJeuMarioCompInc() {
+        $jeu = Game::where('name', 'like', 'Mario%') -> whereHas('publisher', function ($q) {
+            $q->where('name', 'like', '%Inc.%');
+        })  ->whereHas('rating', function($q) {
+            $q->where('name', 'like', '%3+%');
+        })-> get() -> toArray();
+
+        echo "jeux dont le nom commence par Mario, par une compagnie avec Inc. dans le nom et dont le rating initial contient 3+ : <br> <br>";
+        foreach ($jeu as $g) {
+            echo "Name : " . $g['name'] . "<br>";
+        }
+        echo "FIN <br> <br>";
+    }
+
+    public static function listerJeuMarioCompIncRating3() {
+        $jeu = Game::where('name', 'like', 'Mario%')->whereHas('publisher', function($q) {
+            $q->where('name', 'like', '%Inc%');
+        })->whereHas('rating', function($q) {
+            $q->where('name', 'like', '%3+%')->whereHas('ratingboard', function($q){
+                $q->where('name', '=', 'CERO');
+            });})
+            ->get()->toArray();
+
+            echo "jeux dont le nom commence par Mario, publiés par une compagnie dont le nom contient contient Inc, dont le rating contient 3+ et ayant reçu un avis du rating board nommé CERO : <br> <br>";
+            foreach ($jeu as $g) {
+                echo "Name : " . $g['name'] . "<br>";
+            }
+            echo "FIN <br> <br>";
+    }
+
+    public static function nouveauGenreEtJeux() {
+        $g = new Genre();
+        $g->name = 'Nouveau';
+        $g->deck = 'Nouveau genre';
+        $g->description = 'Nouveau Genre !';
+        $g->save();
+
+        $g->Game()->attach([12,56,345]);
+    }
 }

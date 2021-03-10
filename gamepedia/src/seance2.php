@@ -9,14 +9,13 @@ $db->addConnection(parse_ini_file('../config/config.ini'));
 $db->setAsGlobal();
 $db->bootEloquent();
 
-//Requetes::listerJeuxMario();
+//Requetes::listerPersoJeu12342();
+//Requetes::listerPersoJeuMario();
+//Requetes::listerJeuSony();
+//Requetes::listerRatingMario();
+//Requetes::listerJeuMario3Perso();
+//Requetes::listerJeuMarioRating();
+//Requetes::listerJeuMarioCompInc();
+//Requetes::listerJeuMarioCompIncRating3();
 
-//Requetes::listerCompagniesJapon();
-
-//Requetes::listerPlatformeSup10000000();
-
-//Requetes::lister442jeux();
-
-//Requetes::listerJeux();
-
-Requetes::listerJeuxPar500($_GET);
+Requetes::nouveauGenreEtJeux();
