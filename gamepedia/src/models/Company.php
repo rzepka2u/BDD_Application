@@ -12,4 +12,12 @@ class Company extends Model {
         return $this->belongsTo('gamepedia\models\Company','company_id');
     }
 
+    public function Publish() {
+        return $this->belongsToMany('gamepedia\models\Game', 'game_publishers', 'comp_id', 'game_id');
+    }
+
+    public function Develop() {
+        return $this->belongsToMany('gamepedia\models\Game', 'game_developers', 'comp_id', 'game_id');
+    }
+
 }
