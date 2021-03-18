@@ -27,7 +27,7 @@ class Requetes {
     public static function listerPersoJeuMario() {
         $tmp1 = microtime(true);
         $perso = Character::whereHas('game', function ($q) {
-            $q->where('name', 'like', 'Mario%');
+            $q->where('name', 'like', '%Mario%');
         }) -> get() -> toArray();
         $tmp2 = microtime(true);
 
@@ -35,7 +35,8 @@ class Requetes {
         foreach ($perso as $g) {
             echo "Name : " . $g['name'] . "<br>";
         }
-        echo "temps d'éxecution : " . $tmp2-$tmp1;
+        echo "temps d'éxecution : ";
+        var_dump($tmp2-$tmp1);
         echo "FIN <br> <br>";
     }
 
@@ -62,7 +63,8 @@ class Requetes {
         foreach ($jeu as $g) {
             echo "Rating : " . $g['name'] . "<br>";
         }
-        echo "temps d'éxécution : " . $tmp2-$tmp1 ;
+        echo "temps d'éxécution : ";
+        var_dump($tmp2-$tmp1);
         echo "FIN <br> <br>";
     }
 
@@ -87,7 +89,8 @@ class Requetes {
         foreach ($jeu as $g) {
             echo "Name : " . $g['name'] . "<br>";
         }
-        echo "temps d'éxecution : " . $tmp2-$tmp1;
+        echo "temps d'éxecution : ";
+        var_dump($tmp2-$tmp1);
         echo "FIN <br> <br>";
     }
 
@@ -130,4 +133,71 @@ class Requetes {
 
         $g->Game()->attach([12,56,345]);
     }
+
+    public static function listerJeuX() {
+        $tmp1 = microtime(true);
+        $perso = Game::where('name', 'like', 'Mario%') -> get() -> toArray();
+        $tmp2 = microtime(true);
+
+        echo "jeux débutant par le nom : <br> <br>";
+        foreach ($perso as $g) {
+            echo "Name : " . $g['name'] . "<br>";
+        }
+        echo "temps d'éxecution : ";
+        var_dump($tmp2-$tmp1);
+        echo "FIN <br> <br>";
+    }
+
+    public static function listerJeuxContient() {
+        $tmp1 = microtime(true);
+        $jeu = Game::where('name', 'like', '%Mario%') -> get() -> toArray();
+        $tmp2 = microtime(true);
+
+        echo "rating initial des jeux dont le nom contient : <br> <br>";
+        foreach ($jeu as $g) {
+            echo "Nom : " . $g['name'] . "<br>";
+        }
+        echo "temps d'éxécution : ";
+        var_dump($tmp2-$tmp1);
+        echo "FIN <br> <br>";
+    }
+
+    public static function listerCompagniesPays() {
+        $tmp1 = microtime(true);
+        $perso = Company::where('location_country', '=', 'United States') -> get() -> toArray();
+        $tmp2 = microtime(true);
+
+        echo "Compagnies : <br> <br>";
+        foreach ($perso as $g) {
+            echo "Name : " . $g['name'] . "<br>";
+        }
+        echo "temps d'éxecution : ";
+        var_dump($tmp2-$tmp1);
+        echo "FIN <br> <br>";
+    }
+
+    public static function listerPersoJeuMarioPasOpti() {
+        $tmp1 = microtime(true);
+        $perso = Game::where('name', 'like', '%Mario%') -> with('Character') -> get() -> toArray();
+        $tmp2 = microtime(true);
+
+        echo "personnages des jeux débutant par Mario : <br> <br>";
+        foreach ($perso as $g) {
+            echo "Name : " . $g['name'] . "<br>";
+        }
+        echo "temps d'éxecution : ";
+        var_dump($tmp2-$tmp1);
+        echo "FIN <br> <br>";
+    }
+
+    public static function listerJeuSonyPasOpti() {
+        $jeu = Company::where('name', 'like', '%Sony%') -> with('Develop') -> get() -> toArray();
+
+        echo "jeu développés par Sony : <br> <br>";
+        foreach ($jeu as $g) {
+            echo "Name : " . $g['name'] . "<br>";
+        }
+        echo "FIN <br> <br>";
+    }
+
 }
