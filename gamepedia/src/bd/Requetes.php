@@ -25,14 +25,17 @@ class Requetes {
     }
 
     public static function listerPersoJeuMario() {
+        $tmp1 = microtime(true);
         $perso = Character::whereHas('game', function ($q) {
             $q->where('name', 'like', 'Mario%');
         }) -> get() -> toArray();
+        $tmp2 = microtime(true);
 
         echo "personnages des jeux débutant par Mario : <br> <br>";
         foreach ($perso as $g) {
             echo "Name : " . $g['name'] . "<br>";
         }
+        echo "temps d'éxecution : " . $tmp2-$tmp1;
         echo "FIN <br> <br>";
     }
 
@@ -49,14 +52,17 @@ class Requetes {
     }
 
     public static function listerRatingMario() {
+        $tmp1 = microtime(true);
         $jeu = GameRating::whereHas('game', function ($q) {
             $q->where('name', 'like', '%Mario%');
         }) -> get() -> toArray();
+        $tmp2 = microtime(true);
 
         echo "rating initial des jeux dont le nom contient Mario : <br> <br>";
         foreach ($jeu as $g) {
             echo "Rating : " . $g['name'] . "<br>";
         }
+        echo "temps d'éxécution : " . $tmp2-$tmp1 ;
         echo "FIN <br> <br>";
     }
 
@@ -71,14 +77,17 @@ class Requetes {
     }
 
     public static function listerJeuMarioRating() {
+        $tmp1 = microtime(true);
         $jeu = Game::where('name', 'like', 'Mario%')->whereHas('rating', function($q) {
             $q->where('name', 'like', '%3+%');
         })-> get() -> toArray();
+        $tmp2 = microtime(true);
 
         echo "jeux dont le nom commence par Mario et dont le rating initial contient 3+ : <br> <br>";
         foreach ($jeu as $g) {
             echo "Name : " . $g['name'] . "<br>";
         }
+        echo "temps d'éxecution : " . $tmp2-$tmp1;
         echo "FIN <br> <br>";
     }
 
