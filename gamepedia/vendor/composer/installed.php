@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '738ecaaeb89799012e73ee3c239b25a9d4be6cb8',
+    'reference' => '9c364ca403ae10b7e1bc038796e45f30717f32d0',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '738ecaaeb89799012e73ee3c239b25a9d4be6cb8',
+      'reference' => '9c364ca403ae10b7e1bc038796e45f30717f32d0',
     ),
     'doctrine/inflector' => 
     array (
@@ -28,6 +28,15 @@
       array (
       ),
       'reference' => '9cf661f4eb38f7c881cac67c75ea9b00bf97b210',
+    ),
+    'fakerphp/faker' => 
+    array (
+      'pretty_version' => 'v1.13.0',
+      'version' => '1.13.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'ab3f5364d01f2c2c16113442fb987d26e4004913',
     ),
     'illuminate/collections' => 
     array (

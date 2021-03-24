@@ -200,4 +200,7 @@ class Requetes {
         echo "FIN <br> <br>";
     }
 
+    public static function utilisateurs() {
+        return models\Utilisateurs::all();
+    }
 }
