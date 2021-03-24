@@ -9,7 +9,7 @@ class Commentaire extends Model {
     protected $primaryKey = 'id';
 
     public function Utilisateurs() {
-        return $this->hasMany('gamepedia\models\Utilisateurs', 'email', 'email_utilisateur');
+        return $this->hasMany('gamepedia\models\Utilisateurs', 'email_utilisateur');
     }
 
     public function Game() {

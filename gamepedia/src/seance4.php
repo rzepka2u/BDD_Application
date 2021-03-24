@@ -78,19 +78,41 @@ $cm1->Game()->attach(12342);
 $cm2->Game()->attach(12342);
 $cm3->Game()->attach(12342);*/
 
-$faker = Faker\Factory::create();
 
-
-while (Requetes::utilisateurs()->count() < 25000) {
+            //$faker = Faker\Factory::create();
+/*
+$i = 0;
+while ($i < 25000) {
     $us = new Utilisateurs();
-    $us->email = $faker->email();
-
 
     $us->nom = $faker->lastName();
     $us->prenom = $faker->firstName();
     $us->adresse = $faker->address();
     $us->telephone = $faker->phoneNumber();
     $us->date_naissance = $faker->dateTime();
-    $us->save();
-}
 
+    $us->email = $us->prenom . '.' . $us->nom . $i . '@' . $faker->domainName() ;
+
+    $us->save();
+    $i++;
+}*/
+
+
+/*foreach(Requetes::utilisateurs() as $utilisateur) {
+    for($i=0; $i<10; $i++) {
+        $cm1 = new Commentaire();
+        $cm1->email_utilisateur = $utilisateur->email;
+        $cm1->titre = $faker->word();
+        $cm1->contenu = $faker->sentence();
+        $cm1->save();
+    }
+}*/
+/*
+foreach(Requetes::commentaires() as $commentaire) {
+    $id = random_int(0, 47948);
+    $commentaire->Game()->attach($id);
+}*/
+
+//Requetes::listerCommentaireUtilisateur("Aaliyah.Boehm1224@okeefe.com");
+
+Requetes::Utilisateurs5Commentaires();

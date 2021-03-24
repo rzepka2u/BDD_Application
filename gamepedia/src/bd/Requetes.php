@@ -203,4 +203,29 @@ class Requetes {
     public static function utilisateurs() {
         return models\Utilisateurs::all();
     }
+
+    public static function commentaires() {
+        return models\Commentaire::all();
+    }
+
+    public static function listerCommentaireUtilisateur($email) {
+        $commentaires = models\Commentaire::where('email_utilisateur', '=', $email) -> with('Game') -> get() -> toArray();
+        echo "Commmentaires postés par : " . $email . " <br> <br>";
+        foreach ($commentaires as $c) {
+            echo "Date commentaire : " . $c['created_at'] . "<br>";
+        }
+        echo "FIN <br> <br>";
+    }
+
+    /*public static function Utilisateurs5Commentaires() {
+        $commentaires = models\Commentaire::all();
+
+        foreach ()
+
+        echo "Utilisateur ayant postés plus de 5 commentaires : <br> <br>";
+        foreach ($utilisateurs as $u) {
+            echo "Name : " . $u['nom'] . " " . $u['prenom'] . "<br>";
+        }
+        echo "FIN <br> <br>";
+    }*/
 }
