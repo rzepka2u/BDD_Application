@@ -17,6 +17,7 @@ class ComposerStaticInitb29be0f01cd038c367e7bfeab2bc8c29
         '60799491728b879e74601d83e38b2cad' => __DIR__ . '/..' . '/illuminate/collections/helpers.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -41,14 +42,17 @@ class ComposerStaticInitb29be0f01cd038c367e7bfeab2bc8c29
             'Symfony\\Component\\Translation\\' => 30,
             'Symfony\\Component\\String\\' => 25,
             'Symfony\\Component\\Console\\' => 26,
+            'Slim\\' => 5,
         ),
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
+            'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
         ),
         'I' => 
         array (
+            'Interop\\Container\\' => 18,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\Database\\' => 20,
             'Illuminate\\Contracts\\' => 21,
@@ -56,6 +60,7 @@ class ComposerStaticInitb29be0f01cd038c367e7bfeab2bc8c29
         ),
         'F' => 
         array (
+            'FastRoute\\' => 10,
             'Faker\\' => 6,
         ),
         'D' => 
@@ -121,13 +126,25 @@ class ComposerStaticInitb29be0f01cd038c367e7bfeab2bc8c29
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
+        'Slim\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/slim/Slim',
+        ),
         'Psr\\SimpleCache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
+        'Interop\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
         ),
         'Illuminate\\Support\\' => 
         array (
@@ -147,6 +164,10 @@ class ComposerStaticInitb29be0f01cd038c367e7bfeab2bc8c29
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
         ),
+        'FastRoute\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nikic/fast-route/src',
+        ),
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
@@ -158,6 +179,16 @@ class ComposerStaticInitb29be0f01cd038c367e7bfeab2bc8c29
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'Pimple' => 
+            array (
+                0 => __DIR__ . '/..' . '/pimple/pimple/src',
+            ),
         ),
     );
 
@@ -176,6 +207,7 @@ class ComposerStaticInitb29be0f01cd038c367e7bfeab2bc8c29
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitb29be0f01cd038c367e7bfeab2bc8c29::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitb29be0f01cd038c367e7bfeab2bc8c29::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitb29be0f01cd038c367e7bfeab2bc8c29::$prefixesPsr0;
             $loader->classMap = ComposerStaticInitb29be0f01cd038c367e7bfeab2bc8c29::$classMap;
 
         }, null, ClassLoader::class);

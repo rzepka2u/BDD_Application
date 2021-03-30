@@ -228,4 +228,9 @@ class Requetes {
         }
         echo "FIN <br> <br>";
     }*/
+
+    public static function getJeuX($id) {
+        return Game::where('id', '=', $id) -> get() -> toArray();
+    }
+
 }

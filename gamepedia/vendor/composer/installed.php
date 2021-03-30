@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '9c364ca403ae10b7e1bc038796e45f30717f32d0',
+    'reference' => '4f774d8ca05e5f8dd98e6a7e2d7e6bae29418f39',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,16 @@
       'aliases' => 
       array (
       ),
-      'reference' => '9c364ca403ae10b7e1bc038796e45f30717f32d0',
+      'reference' => '4f774d8ca05e5f8dd98e6a7e2d7e6bae29418f39',
+    ),
+    'container-interop/container-interop' => 
+    array (
+      'pretty_version' => '1.2.0',
+      'version' => '1.2.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '79cbf1341c22ec75643d841642dd5d6acd83bdb8',
     ),
     'doctrine/inflector' => 
     array (
@@ -101,6 +110,24 @@
       ),
       'reference' => '528783b188bdb853eb21239b1722831e0f000a8d',
     ),
+    'nikic/fast-route' => 
+    array (
+      'pretty_version' => 'v0.6.0',
+      'version' => '0.6.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '31fa86924556b80735f98b294a7ffdfb26789f22',
+    ),
+    'pimple/pimple' => 
+    array (
+      'pretty_version' => 'v3.3.1',
+      'version' => '3.3.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '21e45061c3429b1e06233475cc0e1f6fc774d5b0',
+    ),
     'psr/container' => 
     array (
       'pretty_version' => '1.0.0',
@@ -117,6 +144,15 @@
         0 => '1.0',
       ),
     ),
+    'psr/http-message' => 
+    array (
+      'pretty_version' => '1.0.1',
+      'version' => '1.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'f6561bf28d520154e4b0ec72be95418abe6d9363',
+    ),
     'psr/log-implementation' => 
     array (
       'provided' => 
@@ -132,6 +168,15 @@
       array (
       ),
       'reference' => '408d5eafb83c57f6365a3ca330ff23aa4a5fa39b',
+    ),
+    'slim/slim' => 
+    array (
+      'pretty_version' => '3.0.0',
+      'version' => '3.0.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '3b06f0f2d84dabbe81b6cea46ace46a3e883253e',
     ),
     'symfony/console' => 
     array (
