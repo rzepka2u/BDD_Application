@@ -22,5 +22,11 @@ $app = new \Slim\App($container);
 $app->get('/api/games/{id}', ControleurP::class.':getJeuX')->setName("getJeuX");
 $app->get('/api/games', ControleurP::class.':getJeu200')->setName("getJeu200");
 
+$app->get('/api/games/{id}/comments', ControleurP::class.':getCommentsJeuX')->setName("getCommentsJeuX");
+$app->get('/api/games/{id}/characters', ControleurP::class.':getCharactersJeuX')->setName("getCharactersJeuX");
+
+$app->get('/api/characters/{id}', ControleurP::class.':getCharacterX')->setName("getCharacterX");
+
+
 
 $app->run();
