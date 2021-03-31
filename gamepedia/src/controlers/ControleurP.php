@@ -129,6 +129,17 @@ class ControleurP {
 
     public function newComment(Request $request, Response $response, $args) : Response {
 
+        $g = new Commentaire();
+        $g->email_utilisateur = $request->getParam('email_utilisateur');
+        $g->titre = $request->getParam('titre');
+        $g->contenu = $request->getParam('contenu');
+        $g->created_at = new \DateTime();
+        $g->updated_at = new \DateTime();
+        $g->save();
+
+        $g->Game()->attach(args['id']);
+
+        return $response->withStatus(201);
     }
 
 }
