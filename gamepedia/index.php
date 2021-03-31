@@ -27,6 +27,6 @@ $app->get('/api/games/{id}/characters', ControleurP::class.':getCharactersJeuX')
 
 $app->get('/api/characters/{id}', ControleurP::class.':getCharacterX')->setName("getCharacterX");
 
-
+$app->post('/api/games/{id}/comments', ControleurP::class.':getCommentsJeuX')->setName("getCommentsJeuX");
 
 $app->run();

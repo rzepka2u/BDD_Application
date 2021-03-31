@@ -26,7 +26,8 @@ class ControleurP {
 
         $tab['games'] = $tmp;
 
-        $tab['links']= ["self" => $this->container->router->pathFor("getJeuX", ['id' => $args['id']])];
+        $tab['links']= ["comments" => ['href' => $this->container->router->pathFor("getCommentsJeuX", ['id' => $args['id']]) ]];
+        $tab['links']+= ["characters" => ['href' => $this->container->router->pathFor("getCharactersJeuX", ['id' => $args['id']]) ]];
 
         return $response->withJson($tab, 200, JSON_PRETTY_PRINT);
     }
@@ -95,9 +96,17 @@ class ControleurP {
             return $response->withJson(['error'=> "Jeu introuvable"], 404, JSON_PRETTY_PRINT);
         }
 
-        $tab['characters'] = $tmp;
+        $tmpbis = null;
+        $tmpquadris = [];
+        foreach ($tmp as $character) {
+            $id = $character['id'];
+            $name = $character['name'];
+            $tmpbis['character'] = ['id' => $id, 'name' => $name];
+            $tmpbis['links'] = ["self" => $this->container->router->pathFor("getCharacterX", ['id' => $id])];
 
-        $tab['links'] = ["self" => $this->container->router->pathFor("getCharacterX", ['id' => $args['id']])];
+            array_push($tmpquadris,$tmpbis);
+        }
+        $tab['characters'] = $tmpquadris;
 
         return $response->withJson($tab, 200, JSON_PRETTY_PRINT);
     }
@@ -116,6 +125,10 @@ class ControleurP {
         $tab['character'] = $tmp;
 
         return $response->withJson($tab, 200, JSON_PRETTY_PRINT);
+    }
+
+    public function newComment(Request $request, Response $response, $args) : Response {
+
     }
 
 }
